@@ -10,13 +10,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker compose build'
+                bat 'docker compose build'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'docker compose down || true'
-                sh 'docker compose up -d'
+                bat 'docker compose down || exit 0'
+                bat 'docker compose up -d'
             }
         }
     }
